@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="adminPanel">
+
+<header class="panelHeader">
+    <h1>FRIKI IMPRE3D</h1>
+
+    <button id="logoutBtn">
+        Cerrar sesión
+    </button>
+</header>
+
+
+<section class="formProducto">
+
+<h2>Nuevo producto</h2>
+
+<input id="nombre" placeholder="Nombre del producto">
+
+<input id="precio" type="number" placeholder="Precio">
+
+<textarea id="descripcion"
+placeholder="Descripción"></textarea>
+
+<label class="uploadBox">
+
+Seleccionar hasta 4 imágenes
+
+<input
+type="file"
+id="imagenes"
+accept="image/*"
+multiple
+hidden>
+
+</label>
+
+<div id="preview"></div>
+
+<button id="guardarBtn">
+Guardar producto
+</button>
+
+</section>
+
+<section>
+
+<h2>Productos</h2>
+
+<div id="listaProductos"></div>
+
+</section>
+
+<script type="module" src="panel.js"></script>
+
+</body>
+</html>
