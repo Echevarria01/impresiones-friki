@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="FRIKI IMPRE3D - Impresión 3D profesional, prototipos, decoración, figuras, repuestos y diseño personalizado."
+    >
+
+    <meta
+        name="theme-color"
+        content="#070707"
+    >
+
+    <title>
+        FRIKI IMPRE3D | Impresión 3D Profesional
+    </title>
+
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     LOADER / IMPRESORA 3D
+========================================================= -->
+
+<div
+    id="loader"
+    class="loader"
+>
+
+
+    <!-- FONDO -->
+
+    <div class="loaderBackground"></div>
+
+
+    <!-- =====================================================
+         PANEL DE CARGA
+    ====================================================== -->
+
+    <div class="loadingPanel">
+
+        <h2>
+            INICIANDO IMPRESIÓN...
+        </h2>
+
+        <p>
+            Preparando cama caliente...
+        </p>
+
+
+        <div class="progress">
+
+            <div
+                class="progressBar"
+                id="progressBar"
+            ></div>
+
+        </div>
+
+
+        <span id="percent">
+            0%
+        </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         IMPRESORA
+    ====================================================== -->
+
+    <div class="printer">
+
+
+        <!-- LEDS -->
+
+        <div class="led led1"></div>
+
+        <div class="led led2"></div>
+
+        <div class="led led3"></div>
+
+
+        <!-- MARCO -->
+
+        <div class="frameLeft"></div>
+
+        <div class="frameRight"></div>
+
+        <div class="frameTop"></div>
+
+
+        <!-- RIEL -->
+
+        <div class="rail"></div>
+
+
+        <!-- =================================================
+             CABEZAL
+        ================================================== -->
+
+        <div
+            class="head"
+            id="head"
+        >
+
+            <!-- VENTILADOR -->
+
+            <div class="fan"></div>
+
+
+            <!-- BOQUILLA -->
+
+            <div class="nozzle"></div>
+
+
+            <!-- FILAMENTO -->
+
+            <div
+                class="filament"
+                id="filament"
+            ></div>
+
+
+            <!-- HUMO -->
+
+            <div class="smoke smoke1"></div>
+
+            <div class="smoke smoke2"></div>
+
+        </div>
+
+
+        <!-- =================================================
+             CAMA DE IMPRESIÓN
+        ================================================== -->
+
+        <div class="bed">
+
+
+            <!-- REJILLA -->
+
+            <div class="grid"></div>
+
+
+            <!-- ZONA IMPRESA -->
+
+            <div class="printedArea">
+
+                <h1 id="logoPrint">
+                    FRIKI IMPRE3D
+                </h1>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     SITIO PRINCIPAL
+========================================================= -->
+
+<div
+    id="site"
+    class="site"
+>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <nav>
+
+
+            <!-- LOGO -->
+
+            <a
+                href="#inicio"
+                class="logo"
+                aria-label="FRIKI IMPRE3D"
+            >
+
+                <h1>
+
+                    FRIKI
+
+                    <span>
+                        IMPRE3D
+                    </span>
+
+                </h1>
+
+            </a>
+
+
+            <!-- BOTÓN MOBILE -->
+
+            <button
+                class="menuButton"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+
+            <!-- MENÚ -->
+
+            <ul>
+
+                <li>
+                    <a href="#inicio">
+                        Inicio
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#servicios">
+                        Servicios
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="galeria.html">
+                        Galería
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#materiales">
+                        Materiales
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#contacto">
+                        Contacto
+                    </a>
+                </li>
+
+            </ul>
+
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section
+            class="hero"
+            id="inicio"
+        >
+
+            <div class="heroOverlay"></div>
+
+            <div class="heroPrinterGlow"></div>
+
+
+            <div class="heroContent">
+
+
+                <span class="miniTitle">
+                    FRIKI IMPRE3D
+                </span>
+
+
+                <h2>
+
+                    IMPRESIÓN 3D
+
+                    <br>
+
+                    PROFESIONAL
+
+                </h2>
+
+
+                <p>
+
+                    Convertimos tus ideas en realidad.
+
+                    <br><br>
+
+                    Diseñamos, modelamos e imprimimos
+                    piezas únicas con calidad profesional.
+
+                    <br>
+
+                    Desde prototipos industriales hasta
+                    figuras, decoración y repuestos
+                    personalizados.
+
+                </p>
+
+
+                <div class="heroButtons">
+
+
+                    <a
+    href="https://wa.me/5492612326424?text=Hola%20FRIKI%20IMPRE3D%2C%20quiero%20solicitar%20un%20presupuesto."
+    class="btn"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Solicitar Presupuesto
+</a>
+
+
+                    <a
+                        href="galeria.html"
+                        class="btnSecondary"
+                    >
+                        Ver Trabajos
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SERVICIOS
+        ================================================== -->
+
+        <section
+            class="services"
+            id="servicios"
+        >
+
+
+            <div class="sectionTitle">
+
+                <span>
+                    NUESTROS SERVICIOS
+                </span>
+
+                <h2>
+                    Soluciones para cada proyecto
+                </h2>
+
+                <p>
+                    Trabajamos con particulares,
+                    emprendedores, empresas y escuelas.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🖨️
+                    </div>
+
+                    <h3>
+                        Impresión 3D
+                    </h3>
+
+                    <p>
+                        Fabricación de piezas de alta
+                        calidad utilizando PLA, PETG,
+                        TPU y otros materiales según
+                        la necesidad del proyecto.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        📐
+                    </div>
+
+                    <h3>
+                        Modelado 3D
+                    </h3>
+
+                    <p>
+                        Diseñamos modelos desde cero
+                        para que puedas imprimir
+                        cualquier idea que tengas.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Repuestos
+                    </h3>
+
+                    <p>
+                        Fabricamos repuestos difíciles
+                        de conseguir para hogar,
+                        industria y automóviles.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🎁
+                    </div>
+
+                    <h3>
+                        Personalizados
+                    </h3>
+
+                    <p>
+                        Llaveros, nombres, figuras,
+                        regalos, souvenirs y decoración
+                        completamente personalizados.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Prototipos
+                    </h3>
+
+                    <p>
+                        Desarrollo rápido para validar
+                        diseños antes de fabricar una
+                        pieza definitiva.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🏢
+                    </div>
+
+                    <h3>
+                        Empresas
+                    </h3>
+
+                    <p>
+                        Producción de piezas por unidad
+                        o en pequeñas series para
+                        negocios y emprendimientos.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="stats">
+
+
+                <div class="stat">
+
+                    <strong>
+                        +1500
+                    </strong>
+
+                    <span>
+                        Piezas impresas
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        +300
+                    </strong>
+
+                    <span>
+                        Clientes satisfechos
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        24 hs
+                    </strong>
+
+                    <span>
+                        Respuesta rápida
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        100%
+                    </strong>
+
+                    <span>
+                        Personalizado
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+
+
+
+
+         =================================================
+             MATERIALES
+        ================================================== -->
+
+        <section
+            class="materials"
+            id="materiales"
+        >
+
+
+            <div class="sectionTitle">
+
+                <span>
+                    MATERIALES
+                </span>
+
+                <h2>
+                    Trabajamos con los mejores filamentos
+                </h2>
+
+                <p>
+                    Elegimos el material adecuado según
+                    el uso y las necesidades de cada pieza.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🧵
+                    </div>
+
+                    <h3>
+                        PLA
+                    </h3>
+
+                    <p>
+                        Ideal para decoración,
+                        figuras y prototipos.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        PETG
+                    </h3>
+
+                    <p>
+                        Excelente resistencia mecánica
+                        y química.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🧩
+                    </div>
+
+                    <h3>
+                        TPU
+                    </h3>
+
+                    <p>
+                        Material flexible para piezas
+                        elásticas.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🔥
+                    </div>
+
+                    <h3>
+                        Materiales técnicos
+                    </h3>
+
+                    <p>
+                        Uso industrial y piezas sometidas
+                        a altas temperaturas.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             WHY
+        ================================================== -->
+
+        <section class="why">
+
+
+            <div class="sectionTitle">
+
+                <span>
+                    ¿POR QUÉ FRIKI IMPRE3D?
+                </span>
+
+                <h2>
+                    Compromiso, calidad y detalle.
+                </h2>
+
+            </div>
+
+
+            <div class="whyGrid">
+
+
+                <div>
+
+                    <h3>
+                        ✔ Calidad Profesional
+                    </h3>
+
+                    <p>
+                        Impresiones calibradas para lograr
+                        excelentes terminaciones.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        ✔ Atención Personalizada
+                    </h3>
+
+                    <p>
+                        Cada proyecto recibe asesoramiento
+                        desde el diseño hasta la entrega.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        ✔ Entregas Rápidas
+                    </h3>
+
+                    <p>
+                        Priorizamos tiempos de producción
+                        sin descuidar la calidad.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        ✔ Tecnología Actual
+                    </h3>
+
+                    <p>
+                        Equipos modernos para obtener
+                        el mejor resultado posible.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACTO
+        ================================================== -->
+
+        <section
+            class="contact"
+            id="contacto"
+        >
+
+
+            <div class="sectionTitle">
+
+                <span>
+                    CONTACTO
+                </span>
+
+                <h2>
+                    Contanos tu proyecto
+                </h2>
+
+                <p>
+                    Enviános los detalles y te ayudamos
+                    a encontrar la mejor solución.
+                </p>
+
+            </div>
+
+
+            <div class="contactContainer">
+
+
+                <form
+                    class="contactForm"
+                    id="contactForm"
+                >
+
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Nombre"
+                        required
+                    >
+
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        required
+                    >
+
+
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Asunto"
+                    >
+
+
+                    <textarea
+                        name="message"
+                        placeholder="Contanos qué necesitás..."
+                        required
+                    ></textarea>
+
+
+                    <button
+                        type="submit"
+                        class="btn"
+                    >
+                        Enviar consulta
+                    </button>
+
+
+                    <div class="formMessage">
+                        Gracias por tu consulta.
+                    </div>
+
+
+                </form>
+
+
+
+                <div class="contactInfo">
+
+
+                    <div class="infoCard">
+
+                        <h3>
+                            📍 Ubicación
+                        </h3>
+
+                        <p>
+                            Atención y entregas
+                            coordinadas.
+                        </p>
+
+                    </div>
+
+
+                    <div class="infoCard">
+
+                        <h3>
+                            📱 WhatsApp
+                        </h3>
+
+                        <p>
+                            Consultanos directamente
+                            por WhatsApp.
+                        </p>
+
+                    </div>
+
+
+                    <div class="infoCard">
+
+                        <h3>
+                            ✉️ Email
+                        </h3>
+
+                        <p>
+                            Respondemos consultas
+                            y presupuestos.
+                        </p>
+
+                    </div>
+
+
+                    <div class="infoCard">
+
+                        <h3>
+                            ⏱️ Horarios
+                        </h3>
+
+                        <p>
+                            Consultá disponibilidad
+                            para tu proyecto.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="cta">
+
+
+            <div class="ctaContent">
+
+                <h2>
+                    ¿Tenés una idea?
+                </h2>
+
+                <p>
+                    Nosotros podemos convertirla
+                    en una pieza real.
+                </p>
+
+
+                <a
+                    href="#contacto"
+                    class="btn"
+                >
+                    Empezar proyecto
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <div class="footerLogo">
+
+            <h2>
+
+                FRIKI
+
+                <span>
+                    IMPRE3D
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <p>
+            Impresión 3D profesional,
+            diseño y fabricación personalizada.
+        </p>
+
+
+        <div class="footerSocial">
+
+            <a
+    href="https://wa.me/5492612326424?text=Hola%20FRIKI%20IMPRE3D%2C%20quiero%20hacer%20una%20consulta."
+    target="_blank"
+    rel="noopener"
+>
+    WhatsApp
+</a>
+
+            <a href="#contacto">
+                Instagram
+            </a>
+
+            <a href="#contacto">
+                Email
+            </a>
+
+        </div>
+
+
+        <p class="copyright">
+
+            © 2026 FRIKI IMPRE3D.
+            Todos los derechos reservados.
+
+        </p>
+
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL GALERÍA
+========================================================= -->
+
+<div
+    class="galleryModal"
+    id="galleryModal"
+>
+
+
+    <div class="modalBackground"></div>
+
+
+    <div class="modalContent">
+
+
+        <!-- CERRAR -->
+
+        <button
+            type="button"
+            class="closeGallery"
+            onclick="closeGallery()"
+            aria-label="Cerrar galería"
+        >
+            ×
+        </button>
+
+
+        <!-- CABECERA -->
+
+        <div class="modalHeader">
+
+            <span id="modalCategory">
+                TRABAJO
+            </span>
+
+            <h2 id="modalTitle">
+                Proyecto
+            </h2>
+
+        </div>
+
+
+        <!-- FOTO PRINCIPAL -->
+
+        <div class="mainPhoto">
+
+
+            <img
+                id="modalImage"
+                src=""
+                alt="Imagen del proyecto"
+            >
+
+
+            <button
+                type="button"
+                class="galleryArrow prev"
+                onclick="previousPhoto(event)"
+                aria-label="Foto anterior"
+            >
+                ‹
+            </button>
+
+
+            <button
+                type="button"
+                class="galleryArrow next"
+                onclick="nextPhoto(event)"
+                aria-label="Foto siguiente"
+            >
+                ›
+            </button>
+
+
+        </div>
+
+
+        <!-- CONTADOR -->
+
+        <div
+            class="photoCounter"
+            id="photoCounter"
+        >
+            1 / 1
+        </div>
+
+
+        <!-- MINIATURAS -->
+
+        <div
+            class="thumbnails"
+            id="thumbnails"
+        ></div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
