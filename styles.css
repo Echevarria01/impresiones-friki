@@ -3681,3 +3681,67 @@ footer .copyright {
     50%{opacity:1;}
     100%{opacity:0;transform:translateY(-5px);}
 }
+
+/* ===========================
+   LOGIN ADMIN
+=========================== */
+
+.adminLogin{
+    background:#070707;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Montserrat,sans-serif;
+}
+
+.loginBox{
+    width:360px;
+    max-width:90%;
+    background:#111;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+}
+
+.loginBox h1{
+    color:#fff;
+    margin-bottom:8px;
+}
+
+.loginBox p{
+    color:#999;
+    margin-bottom:25px;
+}
+
+.loginBox input{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    background:#1a1a1a;
+    border:1px solid #333;
+    color:#fff;
+    border-radius:10px;
+    font-size:15px;
+}
+
+.loginBox button{
+    width:100%;
+    padding:14px;
+    background:#ff6a00;
+    border:none;
+    color:white;
+    font-weight:700;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.loginBox button:hover{
+    background:#ff8124;
+}
+
+.errorText{
+    color:#ff5b5b;
+    margin-top:15px;
+}
