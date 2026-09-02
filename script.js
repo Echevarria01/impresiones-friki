@@ -582,109 +582,7 @@ head.classList.add("printing");
    🖼️ PROYECTOS / GALERÍA
    ========================================================= */
 
-const projects = [
-
-    {
-        title: "Figura Personalizada",
-
-        category: "TRABAJO 01",
-
-        images: [
-
-            "images/figura/foto1.jpg",
-            "images/figura/foto2.jpg",
-            "images/figura/foto3.jpg",
-            "images/figura/foto4.jpg"
-
-        ]
-
-    },
-
-
-    {
-        title: "Prototipo",
-
-        category: "TRABAJO 02",
-
-        images: [
-
-            "images/prototipo/foto1.jpg",
-            "images/prototipo/foto2.jpg",
-            "images/prototipo/foto3.jpg"
-
-        ]
-
-    },
-
-
-    {
-        title: "Decoración",
-
-        category: "TRABAJO 03",
-
-        images: [
-
-            "images/decoracion/foto1.jpg",
-            "images/decoracion/foto2.jpg",
-            "images/decoracion/foto3.jpg"
-
-        ]
-
-    },
-
-
-    {
-        title: "MACETA HELLO KITTY",
-
-        category: "TRABAJO 04",
-
-        images: [
-
-            "images/kittymaceta/foto1.jpg",
-            "images/kittymaceta/foto2.jpg",
-            "images/kittymaceta/foto3.jpg",
-            "images/kittymaceta/foto4.jpg",
-            "images/kittymaceta/foto5.jpg",
-            "images/kittymaceta/foto6.jpg"
-
-        ]
-
-    },
-
-
-    {
-        title: "Llavero Personalizado",
-
-        category: "TRABAJO 05",
-
-        images: [
-
-            "images/llavero/foto1.jpg",
-            "images/llavero/foto2.jpg",
-            "images/llavero/foto3.jpg",
-            "images/llavero/foto4.jpg",
-            
-        ]
-
-    },
-
-
-    {
-        title: "CLIP SELLADOR DE BOLSAS",
-
-        category: "TRABAJO 06",
-
-        images: [
-
-            "images/clip/foto1.jpg",
-            "images/clip/foto2.jpg",
-            "images/clip/foto3.jpg",
-
-        ]
-
-    }
-
-];
+let projects = [];
 
 
 /* =========================================================
@@ -1391,29 +1289,18 @@ function handleSwipe() {
 
 function preloadImages() {
 
-    projects.forEach(
-        function (project) {
+    projects.forEach(project => {
 
-            project.images.forEach(
-                function (image) {
+        (project.images || []).forEach(image => {
 
-                    const preload =
-                        new Image();
+            const img = new Image();
+            img.src = image;
 
+        });
 
-                    preload.src =
-                        image;
-
-                }
-            );
-
-        }
-    );
+    });
 
 }
-
-
-preloadImages();
 
 
 /* =========================================================
@@ -1850,7 +1737,7 @@ function finalizarCompra() {
 }
 
 /* =====================================================
-   PRODUCTOS DESDE FIREBASE
+   PRODUCTOS DESDE FIREBASE + GALERÍA
 ===================================================== */
 
 async function cargarProductosFirebase() {
@@ -1860,16 +1747,16 @@ async function cargarProductosFirebase() {
 
     grid.innerHTML = "";
 
-    // Vaciar la galería del modal
+    // Vacía la galería del modal
     projects.length = 0;
 
     const snap = await getDocs(collection(db, "productos"));
 
-    snap.forEach((doc, index) => {
+    snap.forEach((documento, index) => {
 
-        const p = doc.data();
+        const p = documento.data();
 
-        // Guardar TODAS las imágenes para el modal
+        // Guardar las imágenes para el modal
         projects.push({
             title: p.nombre,
             category: "FRIKI IMPRE3D",
@@ -1878,7 +1765,6 @@ async function cargarProductosFirebase() {
 
         const card = document.createElement("article");
         card.className = "projectCard";
-        card.onclick = () => openGallery(index);
 
         card.innerHTML = `
             <div class="galleryImage">
@@ -1907,6 +1793,10 @@ async function cargarProductosFirebase() {
             </div>
         `;
 
+        // Abrir modal al tocar la tarjeta
+        card.onclick = () => openGallery(index);
+
+        // Evitar que el botón abra el modal
         card.querySelector(".buyButton").onclick = (e) => {
             e.stopPropagation();
             agregarAlCarrito(p.nombre, Number(p.precio));
@@ -1920,17 +1810,7 @@ async function cargarProductosFirebase() {
         grid.appendChild(card);
 
     });
-        // Evitar abrir la galería cuando se agrega al carrito
-        card.querySelector(".buyButton").onclick = (e) => {
-            e.stopPropagation();
-            agregarAlCarrito(p.nombre, Number(p.precio));
-        };
 
-        card.querySelector(".viewProject").onclick = (e) => {
-            e.stopPropagation();
-            openGallery(index);
-        };
+preloadImages();
 
-        grid.appendChild(card);
-
-    }
+}
