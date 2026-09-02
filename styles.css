@@ -3838,3 +3838,81 @@ footer .copyright {
     border-radius:8px;
     cursor:pointer;
 }
+
+/* ==========================
+   PANEL ADMIN PREVIEW
+========================== */
+
+.previewGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.previewItem{
+    position:relative;
+    border-radius:12px;
+    overflow:hidden;
+    border:2px solid #333;
+    cursor:grab;
+}
+
+.previewItem img{
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    display:block;
+}
+
+.previewItem span{
+    position:absolute;
+    top:8px;
+    left:8px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#ff6a00;
+    color:#fff;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.dragging{
+    opacity:.45;
+}
+
+.miniImgs{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+    margin:10px 0;
+}
+
+.miniItem{
+    position:relative;
+}
+
+.miniItem img{
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.miniItem span{
+    position:absolute;
+    top:2px;
+    left:2px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#ff6a00;
+    color:#fff;
+    font-size:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}

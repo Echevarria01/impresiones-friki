@@ -13,8 +13,16 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
+/* ================================
+   CONFIG
+================================ */
+
 const CLOUD_NAME = "itzyfspq";
 const UPLOAD_PRESET = "productos";
+
+/* ================================
+   ELEMENTOS
+================================ */
 
 const nombre = document.getElementById("nombre");
 const precio = document.getElementById("precio");
@@ -27,113 +35,218 @@ const logout = document.getElementById("logoutBtn");
 
 let archivos = [];
 
+/* ================================
+   LOGIN
+================================ */
+
 onAuthStateChanged(auth, (user) => {
+
   if (!user) {
     location.href = "admin.html";
-  } else {
-    cargarProductos();
+    return;
   }
+
+  cargarProductos();
+
 });
 
 logout.onclick = () => signOut(auth);
 
+/* ================================
+   PREVIEW + ORDENAR
+================================ */
+
 imagenes.onchange = (e) => {
-  archivos = [...e.target.files].slice(0,4);
+
+  archivos = [...e.target.files].slice(0, 4);
+
+  renderPreview();
+
+};
+
+function renderPreview() {
 
   preview.innerHTML = "";
 
-  archivos.forEach(file=>{
-    const img = document.createElement("img");
-    img.src = URL.createObjectURL(file);
-    preview.appendChild(img);
+  archivos.forEach((file, index) => {
+
+    const item = document.createElement("div");
+    item.className = "previewItem";
+    item.draggable = true;
+    item.dataset.index = index;
+
+    item.innerHTML = `
+      <img src="${URL.createObjectURL(file)}">
+      <span>${index + 1}</span>
+    `;
+
+    item.addEventListener("dragstart", () => {
+      item.classList.add("dragging");
+    });
+
+    item.addEventListener("dragend", () => {
+      item.classList.remove("dragging");
+    });
+
+    item.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+
+    item.addEventListener("drop", (e) => {
+
+      e.preventDefault();
+
+      const desde = Number(
+        document.querySelector(".dragging").dataset.index
+      );
+
+      const hasta = index;
+
+      const mover = archivos.splice(desde, 1)[0];
+
+      archivos.splice(hasta, 0, mover);
+
+      renderPreview();
+
+    });
+
+    preview.appendChild(item);
+
   });
-};
 
-guardarBtn.onclick = async ()=>{
+}
 
-  if(!nombre.value || !precio.value){
+/* ================================
+   GUARDAR PRODUCTO
+================================ */
+
+guardarBtn.onclick = async () => {
+
+  if (!nombre.value || !precio.value) {
+
     alert("Completa nombre y precio");
+
     return;
+
   }
 
+  guardarBtn.disabled = true;
   guardarBtn.textContent = "Subiendo...";
 
   const urls = [];
 
-  for(const file of archivos){
+  try {
 
-    const form = new FormData();
+    for (const file of archivos) {
 
-    form.append("file",file);
-    form.append("upload_preset",UPLOAD_PRESET);
-    form.append("folder","productos");
+      const form = new FormData();
 
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-      {
-        method:"POST",
-        body:form
-      }
-    );
+      form.append("file", file);
+      form.append("upload_preset", UPLOAD_PRESET);
+      form.append("folder", "productos");
 
-    const data = await res.json();
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: form
+        }
+      );
 
-    urls.push(data.secure_url);
+      const data = await res.json();
+
+      urls.push(data.secure_url);
+
+    }
+
+    await addDoc(collection(db, "productos"), {
+
+      nombre: nombre.value,
+      precio: Number(precio.value),
+      descripcion: descripcion.value,
+      imagenes: urls
+
+    });
+
+    alert("Producto agregado correctamente");
+
+    nombre.value = "";
+    precio.value = "";
+    descripcion.value = "";
+    imagenes.value = "";
+
+    archivos = [];
+
+    renderPreview();
+
+    cargarProductos();
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert("Error al subir el producto");
+
   }
 
-  await addDoc(collection(db,"productos"),{
-
-    nombre:nombre.value,
-    precio:Number(precio.value),
-    descripcion:descripcion.value,
-    imagenes:urls
-
-  });
-
-  nombre.value="";
-  precio.value="";
-  descripcion.value="";
-  imagenes.value="";
-  preview.innerHTML="";
-  archivos=[];
-
-  guardarBtn.textContent="Guardar producto";
-
-  cargarProductos();
+  guardarBtn.disabled = false;
+  guardarBtn.textContent = "Guardar producto";
 
 };
 
-async function cargarProductos(){
+/* ================================
+   LISTAR PRODUCTOS
+================================ */
 
-  lista.innerHTML="";
+async function cargarProductos() {
 
-  const query = await getDocs(collection(db,"productos"));
+  lista.innerHTML = "";
 
-  query.forEach(item=>{
+  const query = await getDocs(collection(db, "productos"));
+
+  query.forEach((item) => {
 
     const p = item.data();
 
-    const card=document.createElement("div");
-    card.className="cardProducto";
+    const card = document.createElement("div");
 
-    card.innerHTML=`
+    card.className = "cardProducto";
+
+    card.innerHTML = `
+
       <h3>${p.nombre}</h3>
-      <p>$${p.precio.toLocaleString()}</p>
+
+      <p>$${Number(p.precio).toLocaleString("es-AR")}</p>
+
       <div class="miniImgs">
-        ${(p.imagenes||[]).map(img=>`<img src="${img}">`).join("")}
+
+        ${(p.imagenes || []).map((img, i) => `
+
+          <div class="miniItem">
+
+            <img src="${img}">
+
+            <span>${i + 1}</span>
+
+          </div>
+
+        `).join("")}
+
       </div>
-      <button class="eliminarBtn">Eliminar</button>
+
+      <button class="eliminarBtn">
+        Eliminar
+      </button>
+
     `;
 
-    card.querySelector("button").onclick=async()=>{
+    card.querySelector(".eliminarBtn").onclick = async () => {
 
-      if(confirm("¿Eliminar producto?")){
+      if (!confirm("¿Eliminar producto?")) return;
 
-        await deleteDoc(doc(db,"productos",item.id));
+      await deleteDoc(doc(db, "productos", item.id));
 
-        cargarProductos();
-
-      }
+      cargarProductos();
 
     };
 

@@ -1856,30 +1856,28 @@ function finalizarCompra() {
 async function cargarProductosFirebase() {
 
     const grid = document.getElementById("productosGrid");
-
     if (!grid) return;
 
     grid.innerHTML = "";
 
-    const snap = await getDocs(collection(db, "productos"));
-
-    // Limpiar también la galería del modal
+    // Vaciar la galería del modal
     projects.length = 0;
 
-    snap.forEach((documento, index) => {
+    const snap = await getDocs(collection(db, "productos"));
 
-        const p = documento.data();
+    snap.forEach((doc, index) => {
 
-        // Agregar al modal de fotos
+        const p = doc.data();
+
+        // Guardar TODAS las imágenes para el modal
         projects.push({
             title: p.nombre,
             category: "FRIKI IMPRE3D",
-            images: p.imagenes
+            images: p.imagenes || []
         });
 
         const card = document.createElement("article");
         card.className = "projectCard";
-
         card.onclick = () => openGallery(index);
 
         card.innerHTML = `
@@ -1889,7 +1887,6 @@ async function cargarProductosFirebase() {
             </div>
 
             <div class="projectInfo">
-
                 <span>FRIKI IMPRE3D</span>
 
                 <h3>${p.nombre}</h3>
@@ -1900,26 +1897,16 @@ async function cargarProductosFirebase() {
                     $${Number(p.precio).toLocaleString("es-AR")}
                 </div>
 
-                <button
-                    type="button"
-                    class="buyButton">
-
+                <button class="buyButton">
                     Agregar al carrito
-
                 </button>
 
-                <button
-                    type="button"
-                    class="viewProject">
-
+                <button class="viewProject">
                     Ver proyecto →
-
                 </button>
-
             </div>
         `;
 
-        // Evitar abrir la galería cuando se agrega al carrito
         card.querySelector(".buyButton").onclick = (e) => {
             e.stopPropagation();
             agregarAlCarrito(p.nombre, Number(p.precio));
@@ -1933,5 +1920,17 @@ async function cargarProductosFirebase() {
         grid.appendChild(card);
 
     });
+        // Evitar abrir la galería cuando se agrega al carrito
+        card.querySelector(".buyButton").onclick = (e) => {
+            e.stopPropagation();
+            agregarAlCarrito(p.nombre, Number(p.precio));
+        };
 
-}
+        card.querySelector(".viewProject").onclick = (e) => {
+            e.stopPropagation();
+            openGallery(index);
+        };
+
+        grid.appendChild(card);
+
+    }
