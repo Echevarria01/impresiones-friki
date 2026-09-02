@@ -1,3 +1,6 @@
+let imagenes = [];
+let dragIndex = null;
+
 import { auth } from "./firebase.js";
 
 import {

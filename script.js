@@ -1,9 +1,5 @@
 import { db } from "./firebase.js";
-
-import {
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 /* =========================================================
    FRIKI IMPRE3D
    SCRIPT.JS COMPLETO
@@ -58,36 +54,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initPrinter() {
 
+    const loader = document.getElementById("loader");
+
+    // Si estamos en galeria.html, no hay loader
+    if (!loader) return;
+
     console.log("Iniciando impresora...");
 
-
-    /* =====================================================
-       ELEMENTOS
-       ===================================================== */
-
-    const loader =
-        document.getElementById("loader");
-
-    const site =
-        document.getElementById("site");
-
-    const head =
-        document.getElementById("head");
-
-    const logo =
-        document.getElementById("logoPrint");
-
-    const progressBar =
-        document.getElementById("progressBar");
-
-    const percent =
-        document.getElementById("percent");
-
-    const filament =
-        document.getElementById("filament");
-
-    const printedFilament =
-        document.getElementById("printedFilament");
+    const site = document.getElementById("site");
+    const head = document.getElementById("head");
+    const logo = document.getElementById("logoPrint");
+    const progressBar = document.getElementById("progressBar");
+    const percent = document.getElementById("percent");
+    const filament = document.getElementById("filament");
+    const printedFilament = document.getElementById("printedFilament");
 
 
     /* =====================================================
@@ -588,49 +568,22 @@ let projects = [];
 /* =========================================================
    INICIAR GALERÍA
    ========================================================= */
-
 function initGallery() {
 
-    galleryModal =
-        document.getElementById(
-            "galleryModal"
-        );
+    galleryModal = document.getElementById("galleryModal");
+    console.log("galleryModal:", galleryModal);
 
+    modalImage = document.getElementById("modalImage");
+    modalTitle = document.getElementById("modalTitle");
+    modalCategory = document.getElementById("modalCategory");
+    photoCounter = document.getElementById("photoCounter");
+    thumbnails = document.getElementById("thumbnails");
+    mainPhoto = document.querySelector(".mainPhoto");
 
-    modalImage =
-        document.getElementById(
-            "modalImage"
-        );
-
-
-    modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
-
-
-    modalCategory =
-        document.getElementById(
-            "modalCategory"
-        );
-
-
-    photoCounter =
-        document.getElementById(
-            "photoCounter"
-        );
-
-
-    thumbnails =
-        document.getElementById(
-            "thumbnails"
-        );
-
-
-    mainPhoto =
-        document.querySelector(
-            ".mainPhoto"
-        );
+    if (!galleryModal) {
+        console.warn("No existe #galleryModal");
+        return;
+    }
 
 
     /*
@@ -699,223 +652,65 @@ function initGallery() {
 
 /* =========================================================
    ABRIR GALERÍA
-   ========================================================= */
-
+========================================================= */
 function openGallery(projectIndex) {
 
-    if (!galleryModal) {
+    const project = projects[projectIndex];
 
-        console.error(
-            "❌ No existe #galleryModal"
-        );
-
+    if (!project) {
+        console.error("Proyecto no encontrado:", projectIndex);
         return;
-
     }
 
+    currentProject = projectIndex;
+    currentPhoto = 0;
 
-    if (!projects[projectIndex]) {
-
-        console.error(
-            "❌ Proyecto no encontrado:",
-            projectIndex
-        );
-
-        return;
-
-    }
-
-
-    currentProject =
-        projectIndex;
-
-
-    currentPhoto =
-        0;
-
-
-    const project =
-        projects[currentProject];
-
-
-    if (modalTitle) {
-
-        modalTitle.textContent =
-            project.title;
-
-    }
-
-
-    if (modalCategory) {
-
-        modalCategory.textContent =
-            project.category;
-
-    }
-
-
+    // Cargar los datos del proyecto
     renderGallery();
 
-
-    galleryModal.classList.add(
-        "active"
-    );
-
-
-    galleryModal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
+    galleryModal.classList.add("active");
+    document.body.style.overflow = "hidden";
 }
-
-
+console.log(projects);
 /* =========================================================
    RENDERIZAR GALERÍA
-   ========================================================= */
+========================================================= */
 
 function renderGallery() {
 
-    const project =
-        projects[currentProject];
+    const project = projects[currentProject];
+    if (!project) return;
 
+    modalTitle.textContent = project.title;
+    modalCategory.textContent = project.category;
 
-    if (!project) {
+    modalImage.src = project.images[currentPhoto];
+    modalImage.alt = project.title;
 
-        return;
-
-    }
-
-
-    if (
-        !project.images ||
-        project.images.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    if (modalImage) {
-
-        modalImage.src =
-            project.images[currentPhoto];
-
-
-        modalImage.alt =
-            `${project.title} - foto ${currentPhoto + 1}`;
-
-    }
-
-
-    if (photoCounter) {
-
-        photoCounter.textContent =
-            `${currentPhoto + 1} / ${project.images.length}`;
-
-    }
-
-
-    if (!thumbnails) {
-
-        return;
-
-    }
-
+    photoCounter.textContent =
+        `${currentPhoto + 1} / ${project.images.length}`;
 
     thumbnails.innerHTML = "";
 
+    project.images.forEach((img, index) => {
 
-    project.images.forEach(
-        function (image, index) {
+        const thumb = document.createElement("button");
+        thumb.className = "thumbnail";
 
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.type =
-                "button";
-
-
-            button.className =
-                "thumbnail";
-
-
-            if (
-                index === currentPhoto
-            ) {
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            const img =
-                document.createElement(
-                    "img"
-                );
-
-
-            img.src =
-                image;
-
-
-            img.alt =
-                `${project.title} - foto ${index + 1}`;
-
-
-            img.onerror =
-                function () {
-
-                    console.warn(
-                        "⚠️ Imagen no encontrada:",
-                        image
-                    );
-
-                };
-
-
-            button.appendChild(
-                img
-            );
-
-
-            button.addEventListener(
-                "click",
-                function (event) {
-
-                    event.stopPropagation();
-
-
-                    currentPhoto =
-                        index;
-
-
-                    renderGallery();
-
-                }
-            );
-
-
-            thumbnails.appendChild(
-                button
-            );
-
+        if (index === currentPhoto) {
+            thumb.classList.add("active");
         }
-    );
 
+        thumb.innerHTML = `<img src="${img}" alt="">`;
+
+        thumb.onclick = () => {
+            currentPhoto = index;
+            renderGallery();
+        };
+
+        thumbnails.appendChild(thumb);
+    });
 }
-
 
 /* =========================================================
    SIGUIENTE FOTO
@@ -1746,46 +1541,47 @@ async function cargarProductosFirebase() {
     if (!grid) return;
 
     grid.innerHTML = "";
-
-    // Vacía la galería del modal
-    projects.length = 0;
+    projects = [];
 
     const snap = await getDocs(collection(db, "productos"));
 
-    snap.forEach((documento, index) => {
+    let index = 0;
 
-        const p = documento.data();
+    snap.forEach((doc) => {
 
-        // Guardar las imágenes para el modal
+        const p = doc.data();
+
+        const fotos = Array.isArray(p.imagenes)
+            ? p.imagenes
+            : [];
+
         projects.push({
             title: p.nombre,
             category: "FRIKI IMPRE3D",
-            images: p.imagenes || []
+            images: fotos
         });
+
+        const miIndice = index;
 
         const card = document.createElement("article");
         card.className = "projectCard";
 
         card.innerHTML = `
             <div class="galleryImage">
-                <img src="${p.imagenes[0]}" alt="${p.nombre}">
-                <span class="galleryCounter">${p.imagenes.length} FOTOS</span>
+                <img src="${fotos[0]}" alt="${p.nombre}">
+                <span class="galleryCounter">${fotos.length} FOTOS</span>
             </div>
 
             <div class="projectInfo">
                 <span>FRIKI IMPRE3D</span>
-
                 <h3>${p.nombre}</h3>
-
                 <p>${p.descripcion}</p>
 
                 <div class="productPrice">
                     $${Number(p.precio).toLocaleString("es-AR")}
                 </div>
 
-                <button class="buyButton">
-                    Agregar al carrito
-                </button>
+                <button class="buyButton">🛒 Agregar al carrito</button>
 
                 <button class="viewProject">
                     Ver proyecto →
@@ -1793,24 +1589,38 @@ async function cargarProductosFirebase() {
             </div>
         `;
 
-        // Abrir modal al tocar la tarjeta
-        card.onclick = () => openGallery(index);
+        card.querySelector(".galleryImage").onclick = () => openGallery(miIndice);
 
-        // Evitar que el botón abra el modal
+        card.querySelector(".viewProject").onclick = (e) => {
+            e.stopPropagation();
+            openGallery(miIndice);
+        };
+
         card.querySelector(".buyButton").onclick = (e) => {
             e.stopPropagation();
             agregarAlCarrito(p.nombre, Number(p.precio));
         };
 
-        card.querySelector(".viewProject").onclick = (e) => {
-            e.stopPropagation();
-            openGallery(index);
-        };
-
         grid.appendChild(card);
 
+        index++;
     });
 
-preloadImages();
-
+    preloadImages();
 }
+
+/* =====================================================
+   HACER FUNCIONES GLOBALES (HTML onclick)
+===================================================== */
+
+window.openGallery = openGallery;
+window.closeGallery = closeGallery;
+window.nextPhoto = nextPhoto;
+window.previousPhoto = previousPhoto;
+
+window.toggleCarrito = toggleCarrito;
+window.finalizarCompra = finalizarCompra;
+window.cambiarCantidad = cambiarCantidad;
+window.eliminarProducto = eliminarProducto;
+window.vaciarCarrito = vaciarCarrito;
+window.agregarAlCarrito = agregarAlCarrito;
