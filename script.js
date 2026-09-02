@@ -1,3 +1,9 @@
+import { db } from "./firebase.js";
+
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 /* =========================================================
    FRIKI IMPRE3D
    SCRIPT.JS COMPLETO
@@ -41,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initMobileMenu();
     initScrollReveal();
     initContactForm();
+    cargarProductosFirebase();
 
 });
 
@@ -1840,4 +1847,91 @@ function finalizarCompra() {
     carrito = [];
     guardarCarrito();
     actualizarCarrito();
+}
+
+/* =====================================================
+   PRODUCTOS DESDE FIREBASE
+===================================================== */
+
+async function cargarProductosFirebase() {
+
+    const grid = document.getElementById("productosGrid");
+
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    const snap = await getDocs(collection(db, "productos"));
+
+    // Limpiar también la galería del modal
+    projects.length = 0;
+
+    snap.forEach((documento, index) => {
+
+        const p = documento.data();
+
+        // Agregar al modal de fotos
+        projects.push({
+            title: p.nombre,
+            category: "FRIKI IMPRE3D",
+            images: p.imagenes
+        });
+
+        const card = document.createElement("article");
+        card.className = "projectCard";
+
+        card.onclick = () => openGallery(index);
+
+        card.innerHTML = `
+            <div class="galleryImage">
+                <img src="${p.imagenes[0]}" alt="${p.nombre}">
+                <span class="galleryCounter">${p.imagenes.length} FOTOS</span>
+            </div>
+
+            <div class="projectInfo">
+
+                <span>FRIKI IMPRE3D</span>
+
+                <h3>${p.nombre}</h3>
+
+                <p>${p.descripcion}</p>
+
+                <div class="productPrice">
+                    $${Number(p.precio).toLocaleString("es-AR")}
+                </div>
+
+                <button
+                    type="button"
+                    class="buyButton">
+
+                    Agregar al carrito
+
+                </button>
+
+                <button
+                    type="button"
+                    class="viewProject">
+
+                    Ver proyecto →
+
+                </button>
+
+            </div>
+        `;
+
+        // Evitar abrir la galería cuando se agrega al carrito
+        card.querySelector(".buyButton").onclick = (e) => {
+            e.stopPropagation();
+            agregarAlCarrito(p.nombre, Number(p.precio));
+        };
+
+        card.querySelector(".viewProject").onclick = (e) => {
+            e.stopPropagation();
+            openGallery(index);
+        };
+
+        grid.appendChild(card);
+
+    });
+
 }

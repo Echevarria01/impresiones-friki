@@ -5,57 +5,26 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Galería de trabajos de FRIKI IMPRE3D."
-    >
+    <meta name="description" content="Galería de trabajos de FRIKI IMPRE3D.">
 
-    <meta
-        name="theme-color"
-        content="#070707"
-    >
+    <meta name="theme-color" content="#070707">
 
-    <title>
-        Galería | FRIKI IMPRE3D
-    </title>
-
+    <title>Galería | FRIKI IMPRE3D</title>
 
     <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- CSS PRINCIPAL -->
-
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
-
 <body class="galleryPage">
-
 
 <!-- =====================================================
      HEADER
@@ -65,88 +34,25 @@
 
     <nav>
 
-
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="logo"
-            aria-label="FRIKI IMPRE3D"
-        >
-
-            <h1>
-
-                FRIKI
-
-                <span>
-                    IMPRE3D
-                </span>
-
-            </h1>
-
+        <a href="index.html" class="logo" aria-label="FRIKI IMPRE3D">
+            <h1>FRIKI <span>IMPRE3D</span></h1>
         </a>
 
-
-        <!-- MENÚ -->
-
-        <button
-            class="menuButton"
-            type="button"
-            aria-label="Abrir menú"
-            aria-expanded="false"
-        >
+        <button class="menuButton" type="button" aria-label="Abrir menú" aria-expanded="false">
             ☰
         </button>
 
-
         <ul>
 
-            <li>
+            <li><a href="index.html">Inicio</a></li>
 
-                <a href="index.html">
-                    Inicio
-                </a>
+            <li><a href="index.html#servicios">Servicios</a></li>
 
-            </li>
+            <li><a href="galeria.html" class="active">Galería</a></li>
 
+            <li><a href="index.html#materiales">Materiales</a></li>
 
-            <li>
-
-                <a href="index.html#servicios">
-                    Servicios
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a
-                    href="galeria.html"
-                    class="active"
-                >
-                    Galería
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="index.html#materiales">
-                    Materiales
-                </a>
-
-            </li>
-
-
-            <li>
-
-                <a href="index.html#contacto">
-                    Contacto
-                </a>
-
-            </li>
+            <li><a href="index.html#contacto">Contacto</a></li>
 
         </ul>
 
@@ -154,577 +60,115 @@
 
 </header>
 
-
-
 <!-- =====================================================
      GALERÍA
 ===================================================== -->
 
 <main>
 
+<section class="galleryPageHero">
 
-    <section class="galleryPageHero">
+    <div class="sectionTitle">
 
-        <div class="sectionTitle">
+        <span>FRIKI IMPRE3D</span>
 
-            <span>
-                FRIKI IMPRE3D
-            </span>
+        <h2>GALERÍA</h2>
 
+        <p>
+            Conocé algunos de nuestros trabajos realizados mediante impresión 3D.
+        </p>
 
-            <h2>
-                GALERÍA
-            </h2>
+        <div class="printerHero">
 
+            <svg class="printer3D" viewBox="0 0 500 180">
 
-            <p>
-                Conocé algunos de nuestros trabajos
-                realizados mediante impresión 3D.
-            </p>
+                <defs>
 
-<div class="printerHero">
+                    <linearGradient id="frame" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#3a3a3a"/>
+                        <stop offset="50%" stop-color="#7a7a7a"/>
+                        <stop offset="100%" stop-color="#2f2f2f"/>
+                    </linearGradient>
 
-    <svg class="printer3D" viewBox="0 0 500 180">
+                    <linearGradient id="glass" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#101010"/>
+                        <stop offset="100%" stop-color="#1b1b1b"/>
+                    </linearGradient>
 
-        <defs>
-            <linearGradient id="frame" x1="0" x2="1">
-                <stop offset="0%" stop-color="#3a3a3a"/>
-                <stop offset="50%" stop-color="#7a7a7a"/>
-                <stop offset="100%" stop-color="#2f2f2f"/>
-            </linearGradient>
+                    <linearGradient id="orange" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#ff6a00"/>
+                        <stop offset="100%" stop-color="#ff9d35"/>
+                    </linearGradient>
 
-            <linearGradient id="glass" x1="0" x2="1">
-                <stop offset="0%" stop-color="#101010"/>
-                <stop offset="100%" stop-color="#1b1b1b"/>
-            </linearGradient>
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3"/>
+                    </filter>
 
-            <linearGradient id="orange" x1="0" x2="1">
-                <stop offset="0%" stop-color="#ff6a00"/>
-                <stop offset="100%" stop-color="#ff9d35"/>
-            </linearGradient>
+                </defs>
 
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3"/>
-            </filter>
-        </defs>
+                <!-- Base -->
+                <polygon points="120,145 380,145 410,165 90,165" fill="#232323"/>
 
-        <!-- Base -->
-        <polygon points="120,145 380,145 410,165 90,165"
-                 fill="#232323"/>
+                <!-- Cama -->
+                <polygon points="150,115 350,115 370,132 130,132"
+                         fill="#2d2d2d"
+                         stroke="#555"
+                         stroke-width="1"/>
 
-        <!-- Cama -->
-        <polygon points="150,115 350,115 370,132 130,132"
-                 fill="#2d2d2d" stroke="#555" stroke-width="1"/>
+                <!-- Marco -->
+                <rect x="130" y="20" width="240" height="105" rx="12"
+                      fill="url(#glass)"
+                      stroke="url(#frame)"
+                      stroke-width="4"/>
 
-        <!-- Marco -->
-        <rect x="130" y="20" width="240" height="105" rx="12"
-              fill="url(#glass)" stroke="url(#frame)" stroke-width="4"/>
+                <!-- Columnas -->
+                <rect x="145" y="26" width="12" height="95" rx="6" fill="url(#frame)"/>
+                <rect x="343" y="26" width="12" height="95" rx="6" fill="url(#frame)"/>
 
-        <!-- Columnas -->
-        <rect x="145" y="26" width="12" height="95" rx="6" fill="url(#frame)"/>
-        <rect x="343" y="26" width="12" height="95" rx="6" fill="url(#frame)"/>
+                <!-- Barra -->
+                <rect x="157" y="30" width="186" height="8" rx="4" fill="#666"/>
 
-        <!-- Barra -->
-        <rect x="157" y="30" width="186" height="8" rx="4" fill="#666"/>
+                <!-- LEDs -->
+                <circle cx="160" cy="25" r="3" fill="#ff6a00"/>
+                <circle cx="250" cy="25" r="3" fill="#ff6a00"/>
+                <circle cx="340" cy="25" r="3" fill="#ff6a00"/>
 
-        <!-- LEDs -->
-        <circle cx="160" cy="25" r="3" fill="#ff6a00"/>
-        <circle cx="250" cy="25" r="3" fill="#ff6a00"/>
-        <circle cx="340" cy="25" r="3" fill="#ff6a00"/>
+                <!-- Cabezal -->
+                <g class="head3d">
+                    <rect x="228" y="35" width="44" height="28" rx="5" fill="#dadada"/>
+                    <rect x="238" y="43" width="24" height="10" rx="2" fill="#222"/>
+                    <rect x="246" y="63" width="8" height="18" rx="2" fill="url(#orange)"/>
+                </g>
 
-        <!-- Cabezal -->
-        <g class="head3d">
-            <rect x="228" y="35" width="44" height="28" rx="5"
-                  fill="#dadada"/>
-            <rect x="238" y="43" width="24" height="10" rx="2"
-                  fill="#222"/>
-            <rect x="246" y="63" width="8" height="18" rx="2"
-                  fill="url(#orange)"/>
-        </g>
+                <!-- Filamento -->
+                <line x1="250" y1="81" x2="250" y2="103" class="filament3d"/>
 
-        <!-- Filamento -->
-        <line x1="250" y1="81" x2="250" y2="103"
-              class="filament3d"/>
+                <!-- Pieza -->
+                <rect x="228" y="98" width="44" height="20" rx="3" fill="url(#orange)"/>
 
-        <!-- Pieza -->
-        <rect x="228" y="98" width="44" height="20" rx="3"
-              fill="url(#orange)"/>
+                <!-- Glow -->
+                <ellipse cx="250" cy="120" rx="28" ry="5" fill="#ff6a00" opacity=".18"/>
 
-        <!-- Glow -->
-        <ellipse cx="250" cy="120" rx="28" ry="5"
-                 fill="#ff6a00" opacity=".18"/>
+            </svg>
 
-    </svg>
-
-    <p>DISEÑAMOS · IMPRIMIMOS · CREAMOS</p>
-
-</div>
+            <p>DISEÑAMOS · IMPRIMIMOS · CREAMOS</p>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- =====================================================
+     PROYECTOS FIREBASE
+===================================================== -->
 
-    <!-- =================================================
-         PROYECTOS
-    ================================================== -->
+<section class="gallery galleryOnly">
 
-    <section class="gallery galleryOnly">
+    <div id="productosGrid" class="galleryGrid"></div>
 
-        <div class="galleryGrid">
-
-
-
-            <!-- PROYECTO 1 -->
-
-            <article
-                class="projectCard"
-                onclick="openGallery(0)"
-            >
-
-                <div class="galleryImage">
-
-                    <img
-                        src="images/figura/foto1.jpg"
-                        alt="DINO MACETA"
-                    >
-
-                    <span class="galleryCounter">
-                        4 FOTOS
-                    </span>
-
-                </div>
-
-
-
-                <div class="projectInfo">
-
-                    <span>
-                        FRIKI IMPRE3D-01
-                    </span>
-
-
-                    <h3>
-                        DINO MACETA
-                    </h3>
-
-
-                    <p>
-                        Figura realizada mediante
-                        impresión 3D personalizada.
-                    </p>
-
-
-                    <!-- PRECIO -->
-
-                    <div class="productPrice">
-                        $10.000
-                    </div>
-
-
-                    <!-- COMPRAR -->
-
-                    <button
-    type="button"
-    class="buyButton"
-    onclick="event.stopPropagation(); agregarAlCarrito('DINO MACETA', 10000)"
->
-    Agregar al carrito
-</button>
-
-
-                    <!-- VER PROYECTO -->
-
-                    <button
-                        type="button"
-                        class="viewProject"
-                        onclick="event.stopPropagation(); openGallery(0)"
-                    >
-                        Ver proyecto →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROYECTO 2 -->
-
-            <article
-                class="projectCard"
-                onclick="openGallery(1)"
-            >
-
-                <div class="galleryImage">
-
-                    <img
-                        src="images/prototipo/foto1.jpg"
-                        alt="Prototipo 3D"
-                    >
-
-                    <span class="galleryCounter">
-                        3 FOTOS
-                    </span>
-
-                </div>
-
-
-
-                <div class="projectInfo">
-
-                    <span>
-                        FRIKI IMPRE3D-02
-                    </span>
-
-
-                    <h3>
-                        MACETA BUDA
-                    </h3>
-
-
-                    <p>
-                        Diseño y fabricación de macetas
-                        personalizadas.
-                    </p>
-
-
-                    <!-- PRECIO -->
-
-                    <div class="productPrice">
-                        $8.000
-                    </div>
-
-
-                    <!-- COMPRAR -->
-
-                    <button
-                        type="button"
-                        class="buyButton"
-                        onclick="event.stopPropagation(); agregarAlCarrito('MACETA BUDA', 8000)"
-                    >
-                        Agregar al carrito
-                    </button>
-
-
-                    <!-- VER PROYECTO -->
-
-                    <button
-                        type="button"
-                        class="viewProject"
-                        onclick="event.stopPropagation(); openGallery(1)"
-                    >
-                        Ver proyecto →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROYECTO 3 -->
-
-            <article
-                class="projectCard"
-                onclick="openGallery(2)"
-            >
-
-                <div class="galleryImage">
-
-                    <img
-                        src="images/decoracion/foto1.jpg"
-                        alt="Decoración impresa en 3D"
-                    >
-
-                    <span class="galleryCounter">
-                        3 FOTOS
-                    </span>
-
-                </div>
-
-
-
-                <div class="projectInfo">
-
-                    <span>
-                        FRIKI IMPRE3D-03
-                    </span>
-
-
-                    <h3>
-                        MULTI MACETA DECORATIVA
-                    </h3>
-
-
-                    <p>
-                        Maceta decorativa multiuso.
-                    </p>
-
-
-                    <!-- PRECIO -->
-
-                    <div class="productPrice">
-                        $15.000
-                    </div>
-
-
-                    <!-- COMPRAR -->
-
-                    <button
-                        type="button"
-                        class="buyButton"
-                        onclick="event.stopPropagation(); agregarAlCarrito('MULTI MACETA DECORATIVA', 15000)"
-                    >
-                        Agregar al carrito
-                    </button>
-
-
-                    <!-- VER PROYECTO -->
-
-                    <button
-                        type="button"
-                        class="viewProject"
-                        onclick="event.stopPropagation(); openGallery(2)"
-                    >
-                        Ver proyecto →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROYECTO 4 -->
-
-            <article
-                class="projectCard"
-                onclick="openGallery(3)"
-            >
-
-                <div class="galleryImage">
-
-                    <img
-                        src="images/kittymaceta/foto1.jpg"
-                        alt="Repuesto impreso en 3D"
-                    >
-
-                    <span class="galleryCounter">
-                        6 FOTOS
-                    </span>
-
-                </div>
-
-
-
-                <div class="projectInfo">
-
-                    <span>
-                        FRIKI IMPRE3D-04
-                    </span>
-
-
-                    <h3>
-                        MACETA HELLO KITTY
-                    </h3>
-
-
-                    <p>
-                        Maceta decorativa con diseño de Hello Kitty.
-                    </p>
-
-
-                    <!-- PRECIO -->
-
-                    <div class="productPrice">
-                        $10.000
-                    </div>
-
-
-                    <!-- COMPRAR -->
-
-                    <button
-                        type="button"
-                        class="buyButton"
-                        onclick="event.stopPropagation(); agregarAlCarrito('MACETA HELLO KITTY', 10000)"
-                    >
-                        Agregar al carrito
-                    </button>
-
-
-                    <!-- VER PROYECTO -->
-
-                    <button
-                        type="button"
-                        class="viewProject"
-                        onclick="event.stopPropagation(); openGallery(3)"
-                    >
-                        Ver proyecto →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROYECTO 5 -->
-
-            <article
-                class="projectCard"
-                onclick="openGallery(4)"
-            >
-
-                <div class="galleryImage">
-
-                    <img
-                        src="images/llavero/foto1.jpg"
-                        alt="Llavero personalizado"
-                    >
-
-                    <span class="galleryCounter">
-                        4 FOTOS
-                    </span>
-
-                </div>
-
-
-
-                <div class="projectInfo">
-
-                    <span>
-                        FRIKI IMPRE3D-05
-                    </span>
-
-
-                    <h3>
-                        LLAVERO DARTH VADER
-                    </h3>
-
-
-                    <p>
-                        Llaveros y pequeños objetos
-                        completamente personalizados.
-                    </p>
-
-
-                    <!-- PRECIO -->
-
-                    <div class="productPrice">
-                        $1.500
-                    </div>
-
-
-                    <!-- COMPRAR -->
-
-                    <button
-                        type="button"
-                        class="buyButton"
-                        onclick="event.stopPropagation(); agregarAlCarrito('LLAVERO DARTH VADER', 1500)"
-                    >
-                        Agregar al carrito
-                    </button>
-
-
-                    <!-- VER PROYECTO -->
-
-                    <button
-                        type="button"
-                        class="viewProject"
-                        onclick="event.stopPropagation(); openGallery(4)"
-                    >
-                        Ver proyecto →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROYECTO 6 -->
-
-            <article
-                class="projectCard"
-                onclick="openGallery(5)"
-            >
-
-                <div class="galleryImage">
-
-                    <img
-                        src="images/clip/foto1.jpg"
-                        alt="CLIP SELLADOR DE BOLSAS"
-                    >
-
-                    <span class="galleryCounter">
-                        3 FOTOS
-                    </span>
-
-                </div>
-
-
-
-                <div class="projectInfo">
-
-                    <span>
-                        FRIKI IMPRE3D-06
-                    </span>
-
-
-                    <h3>
-                        CLIP SELLADOR DE BOLSAS
-                    </h3>
-
-
-                    <p>
-                        Clip sellador de bolsas impreso en 3D, ideal para mantener los alimentos frescos y organizados.
-                    </p>
-
-
-                    <!-- PRECIO -->
-
-                    <div class="productPrice">
-                        $500 c/u · Bolsa x10 $5.500
-                    </div>
-
-
-                    <!-- COMPRAR -->
-
-                    <button
-                        type="button"
-                        class="buyButton"
-                        onclick="event.stopPropagation(); agregarAlCarrito('CLIP SELLADOR DE BOLSAS', 500)"
-                    >
-                        Agregar al carrito
-                    </button>
-
-
-                    <!-- VER PROYECTO -->
-
-                    <button
-                        type="button"
-                        class="viewProject"
-                        onclick="event.stopPropagation(); openGallery(5)"
-                    >
-                        Ver proyecto →
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-        </div>
-
-    </section>
-
-
+</section>
 </main>
-
-
 
 <!-- =====================================================
      FOOTER
@@ -732,163 +176,87 @@
 
 <footer>
 
-
     <div class="footerLogo">
-
-        <h2>
-
-            FRIKI
-
-            <span>
-                IMPRE3D
-            </span>
-
-        </h2>
-
+        <h2>FRIKI <span>IMPRE3D</span></h2>
     </div>
-
-
 
     <p>
-        Impresión 3D profesional,
-        diseño y fabricación personalizada.
+        Impresión 3D profesional, diseño y fabricación personalizada.
     </p>
-
-
 
     <div class="footerSocial">
-
-        <a href="index.html#contacto">
-            WhatsApp
-        </a>
-
-        <a href="#">
-            Instagram
-        </a>
-
-        <a href="index.html#contacto">
-            Email
-        </a>
-
+        <a href="index.html#contacto">WhatsApp</a>
+        <a href="#">Instagram</a>
+        <a href="index.html#contacto">Email</a>
     </div>
 
-
-
     <p class="copyright">
-
-        © 2026 FRIKI IMPRE3D.
-        Todos los derechos reservados.
-
+        © 2026 FRIKI IMPRE3D. Todos los derechos reservados.
     </p>
 
-
 </footer>
-
-
 
 <!-- =====================================================
      MODAL DE GALERÍA
 ===================================================== -->
 
-<div
-    class="galleryModal"
-    id="galleryModal"
->
-
+<div class="galleryModal" id="galleryModal">
 
     <div class="modalBackground"></div>
 
-
     <div class="modalContent">
-
 
         <button
             type="button"
             class="closeGallery"
             onclick="closeGallery()"
-            aria-label="Cerrar galería"
-        >
+            aria-label="Cerrar galería">
             ×
         </button>
 
-
-
         <div class="modalHeader">
-
-            <span id="modalCategory">
-                TRABAJO
-            </span>
-
-
-            <h2 id="modalTitle">
-                Proyecto
-            </h2>
-
+            <span id="modalCategory">TRABAJO</span>
+            <h2 id="modalTitle">Proyecto</h2>
         </div>
 
-
-
         <div class="mainPhoto">
-
 
             <img
                 id="modalImage"
                 src=""
-                alt="Imagen del proyecto"
-            >
-
-
+                alt="Imagen del proyecto">
 
             <button
                 type="button"
                 class="galleryArrow prev"
                 onclick="previousPhoto(event)"
-                aria-label="Foto anterior"
-            >
+                aria-label="Foto anterior">
                 ‹
             </button>
-
-
 
             <button
                 type="button"
                 class="galleryArrow next"
                 onclick="nextPhoto(event)"
-                aria-label="Foto siguiente"
-            >
+                aria-label="Foto siguiente">
                 ›
             </button>
 
-
         </div>
 
-
-
-        <div
-            class="photoCounter"
-            id="photoCounter"
-        >
+        <div class="photoCounter" id="photoCounter">
             1 / 1
         </div>
 
-
-
-        <div
-            class="thumbnails"
-            id="thumbnails"
-        ></div>
-
+        <div class="thumbnails" id="thumbnails"></div>
 
     </div>
 
 </div>
 
-
-
 <!-- =====================================================
-     JAVASCRIPT
+     CARRITO
 ===================================================== -->
-<!-- CARRITO -->
 
 <div class="cartButton" onclick="toggleCarrito()">
     🛒 <span id="cartCount">0</span>
@@ -906,22 +274,19 @@
     </div>
 
     <div class="carritoFooter">
-
-        <h3>
-            Total: $<span id="totalCarrito">0</span>
-        </h3>
+        <h3>Total: $<span id="totalCarrito">0</span></h3>
 
         <button class="btn" onclick="finalizarCompra()">
             Finalizar compra
         </button>
-
     </div>
 
 </div>
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
-<script src="script.js"></script>
-
+<script type="module" src="script.js"></script>
 
 </body>
-
 </html>
